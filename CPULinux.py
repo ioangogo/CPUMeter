@@ -24,12 +24,13 @@ def signal_handler(signal, frame):
         sys.exit(0)
 signal.signal(signal.SIGINT, signal_handler)
 while True:
-    idle = cpu_stat.cpu_percents()['idle']
-    val = idle/100
-    val = 255 * (1 - val)
-    val = int(round(val))
-    print("Actual: " + str(int(round(100 - cpu_stat.cpu_percents()['idle']))) + "% Data To Arduino: "+ str(val))
-    port.write(bytes([val]))
+#    idle = cpu_stat.cpu_percents()['idle']
+#    val = idle/100
+    val = 255 * round(100 - cpu_stat.cpu_percents()['idle'])/100
+#    val = int(round(val))
+    print(val)
+#    print("Actual: " + str(int(round(100 - cpu_stat.cpu_percents()['idle']))) + "% Data To Arduino: "+ str(val))
+    port.write(bytes([int(val)]))
 
     time.sleep(0.25)
     gc.collect()
