@@ -10,8 +10,8 @@ for p in ports:
     print(lastnum, p)
     portarray.append(p)
     lastnum =+ 1
-ttypath = input("Enter Aurdino tty path from above, ignore the /dev/: ")
-port = serial.Serial('/dev/'+ttypath, 9600)
+ttypath = input("Enter Aurdino tty path from above, the bit after tty: ")
+port = serial.Serial('/dev/tty'+ttypath, 9600)
 import signal
 import sys
 def signal_handler(signal, frame):
@@ -25,12 +25,10 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 while True:
     idle = cpu_stat.cpu_percents()['idle']
-    val = round(idle)/100
-    printval = int(val * 100 - 1)
-    val = 255 * (1-val)
-    val = int(val)
-    print("Actual value: "+ str(printval) + '% Data To Arduino: '+ str(val))
-    lastnum=val
+    val = idle/100
+    val = 255 * (1 - val)
+    val = int(round(val))
+    print("Actual: " + str(int(round(100 - cpu_stat.cpu_percents()['idle']))) + "% Data To Arduino: "+ str(val))
     port.write(bytes([val]))
 
     time.sleep(0.25)
