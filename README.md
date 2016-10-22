@@ -1,5 +1,5 @@
 # CPUMeter
-The Files needed to make a analog cpu meter
+The Files needed to make a analog cpu meter. There is a [How to](https://github.com/ioangogo/CPUMeter/blob/master/How%20To.MD) guide in this repo on how to make it
 
 #Dependecys
 ```
