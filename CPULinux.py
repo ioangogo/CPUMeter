@@ -16,12 +16,13 @@ portarray = []
 ports = list(serial.tools.list_ports.comports())
 
 for p in ports:
-    print(lastnum, p)
-    portarray.append(p)
-    lastnumarray = + 1
+    print(lastnum, ":", p)
+    str(p).split(" ")
+    portarray.append(p[0])
+    lastnumarray =+ 1
 
-ttypath = input("Enter Aurdino tty path from above, the bit after tty: ")
-port = serial.Serial('/dev/tty' + ttypath, 9600)
+ttypath = input("Select Serial device: ")
+port = serial.Serial(portarray[int(ttypath)-1], 9600)
 
 def signal_handler(signal, frame):
     x = lastnum
