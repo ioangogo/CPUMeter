@@ -7,7 +7,7 @@ This assumes you know basic electronics and how to use arduino, if you dont the 
 * what ever you want to use to connect it to
 
 ##Step One
-Follow the Diagram bellow for wiring with the Solinoid Being the meter
+Follow the Diagram bellow for wiring with the Solinoid Being the meter. Use the 5v arudino rail to test what polarity the meter pins are.
 ![](https://raw.githubusercontent.com/ioangogo/CPUMeter/master/work.png)
 
 ##Step Two
